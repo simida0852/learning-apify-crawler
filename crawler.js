@@ -14,7 +14,7 @@ Apify.main(async () => {
     const handlePageFunction = async ({ request, response, body, contentType, $ }) => {
 
         // Sleep random seconds
-        await Apify.utils.sleep(Math.floor(Math.random() * 5000));
+        await Apify.utils.sleep(Math.floor(Math.random() * 8000));
 
         const title = $('title').text();
 
@@ -66,6 +66,5 @@ Apify.main(async () => {
         forceResponseEncoding: 'GB2312',  // * 强制转换编码
     });
     await crawler.run();
-
 });
 

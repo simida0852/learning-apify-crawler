@@ -5,6 +5,7 @@
   "license": "\\",
   "dependencies": {
     "apify": "^0.21.3",
+    "cron": "^1.8.2",
     "mongoose": "^5.10.2"
   }
 }
