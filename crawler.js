@@ -4,7 +4,7 @@ const News = require('./model/news')
 
 const config = require('./config')
 
-Apify.main(async () => {
+const crawler = () => Apify.main(async () => {
     // Create a RequestQueue
     const requestQueue = await Apify.openRequestQueue();
     // Define the starting URL
@@ -68,3 +68,6 @@ Apify.main(async () => {
     await crawler.run();
 });
 
+module.exports = {
+    crawler,
+}

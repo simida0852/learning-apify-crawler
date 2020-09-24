@@ -1,7 +1,9 @@
 const cron = require('node-cron');
 
-const task = cron.schedule('* * * * * *', () => {
-  console.log('start ');
+const crawler = require('./crawler')
+
+const task = cron.schedule('* 30 10 * * *', () => {
+  crawler.crawler()
 });
 
 task.start()
