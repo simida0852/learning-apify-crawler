@@ -4,6 +4,8 @@ const News = require('./model/news')
 
 const config = require('./config')
 
+const deleteFile = require('./deleteFile')
+
 const crawler = () => Apify.main(async () => {
     // Create a RequestQueue
     const requestQueue = await Apify.openRequestQueue();
@@ -66,6 +68,9 @@ const crawler = () => Apify.main(async () => {
         forceResponseEncoding: 'GB2312',  // * 强制转换编码
     });
     await crawler.run();
+
+    await deleteFile.deleteDirectory('apify_storage') //执行完成后删除相关文件夹
+    
 });
 
 module.exports = {
