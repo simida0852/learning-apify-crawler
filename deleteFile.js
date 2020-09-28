@@ -9,7 +9,7 @@ function deleteDirectory(dir) {
             var item_path = path.join(dir, item);
             // console.log(item_path);
             if (fs.statSync(item_path).isDirectory()) {
-                DeleteDirectory(item_path);
+                deleteDirectory(item_path);
             }
             else {
                 fs.unlinkSync(item_path);
