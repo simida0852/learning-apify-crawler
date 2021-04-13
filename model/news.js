@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-mongoose.connect('mongodb://localhost:12102/gsNewsTest')
+mongoose.connect('mongodb://localhost:27017/gsNewsTest')
 
 //监听连接状态(已连接)
 mongoose.connection.on('connected', () => {

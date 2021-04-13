@@ -26,7 +26,7 @@ const crawler = () => Apify.main(async () => {
         await Apify.utils.enqueueLinks({
             $,
             requestQueue,
-            selector: '.floatl ul li a',
+            selector: 'div.conter .floatL a[href]',
             baseUrl: request.loadedUrl,
         });
 
