@@ -4,8 +4,12 @@
   "main": "index.js",
   "license": "\\",
   "dependencies": {
-    "apify": "^0.21.3",
+    "apify": "1.1.2",
+    "axios": "^0.21.1",
+    "bluebird": "^3.7.2",
     "mongoose": "^5.10.2",
-    "node-cron": "^2.0.3"
+    "node-cron": "^2.0.3",
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^9.0.0"
   }
 }
