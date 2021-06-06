@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const Poems = require('./model/poems')
-const fs = require('fs')
-const axios = require('axios')
+
+
 const getFieldAndInsert = async (page) => {
     const res = await page.$$eval('div#main_left .shici_card', $posts => {
         const scrapedData = [];
@@ -31,51 +31,23 @@ const getFieldAndInsert = async (page) => {
 
 
 
-// let arr = Array.from({ length: 100 }, (v, i) => i + 1)
+let arr = Array.from({ length: 100 }, (v, i) => i + 1)
 
-// async function sleep() {
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             resolve()
-//         }, 3000)
-//     })
-// }
-
-// (async () => {
-//     const browser = await puppeteer.launch({ headless: false, slowMo: 1000, devtools: true });
-//     const page = await browser.newPage();
-//     for (let i in arr) {
-//         console.log(arr[i], i);
-//         await sleep();
-//         await page.goto(`https://www.shicimingju.com/paiming?p=${arr[i]}`);
-//         await getFieldAndInsert(page)
-//     }
-// })()
-
-
-// 新建保存图片的文件夹
-function mkdirSaveFolder() {
-    if (!fs.existsSync('./imgs')) {
-        fs.mkdirSync('./imgs')
-        console.log(`主文件夹已生成：./imgs`)
-    } else {
-        console.log(`主文件夹已存在：./imgs`)
-    }
-}
-
-// 下载图片到本地
-async function downloadImage(album, imageSrc, fileName) {
-    let headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.19 Safari/537.36"
-    }
-    await axios({
-        method: 'get',
-        url: 'https://www.shicimingju.com/pics/600/600/item/25739.jpg',
-        responseType: 'stream',
-        headers
-    }).then(function (response) {
-        response.data.pipe(fs.createWriteStream('qjj.png'))
+async function sleep() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve()
+        }, 3000)
     })
 }
 
-downloadImage()
+(async () => {
+    const browser = await puppeteer.launch({ headless: false, slowMo: 1000, devtools: true });
+    const page = await browser.newPage();
+    for (let i in arr) {
+        console.log(arr[i], i);
+        await sleep();
+        await page.goto(`https://www.shicimingju.com/paiming?p=${arr[i]}`);
+        await getFieldAndInsert(page)
+    }
+})()
