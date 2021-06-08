@@ -6,7 +6,6 @@ const Poems = require('./model/poems')
 function mkdirSaveFolder() {
     if (!fs.existsSync('./imgs')) {
         fs.mkdirSync('./imgs')
-        console.log(`主文件夹已生成：./imgs`)
     } else {
         console.log(`主文件夹已存在：./imgs`)
     }
