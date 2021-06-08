@@ -23,19 +23,19 @@ async function downloadImage(imageSrc, fileName) {
         responseType: 'stream',
         headers
     }).then(function (response) {
-        response.data.pipe(fs.createWriteStream(`./imgs/${fileName}.jpg`))
+        response.data.pipe(fs.createWriteStream(`./imgs/${fileName}`))
     })
 }
 
 async function poemsSaveImgs(params) {
 
-    await Poems.find({ p_img_url: 'https://www.shicimingju.com/pics/600/600/item/35180.jpg' }, function (err, docs) {
+    await Poems.find({ 'p_img_url': /https:\/\// }, function (err, docs) {
         if (err) {
             console.log(err);
         }
         docs.map(v => {
             mkdirSaveFolder()
-            downloadImage(v.p_img_url, '35180')
+            downloadImage(v.p_img_url, v.p_img_url && v.p_img_url.match(/\d+.jpg$/) && v.p_img_url.match(/\d+.jpg$/)[0])
         })
     });
 }
